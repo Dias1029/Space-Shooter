@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private FixedJoystick joystick;
-    [SerializeField] private float playerSpeed = 100f;
+    [SerializeField] private float playerSpeed = 30f;
 
     private Rigidbody2D rb;
 
