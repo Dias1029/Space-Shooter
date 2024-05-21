@@ -8,5 +8,8 @@ public class Collector : MonoBehaviour
     {
         if (collision.CompareTag(TagManager.PROJECTILE_TAG))
             collision.gameObject.SetActive(false);
+
+        if (collision.CompareTag(TagManager.METEOR_TAG) || collision.CompareTag(TagManager.ITEMS_TAG))
+            Destroy(collision.gameObject);
     }
 }

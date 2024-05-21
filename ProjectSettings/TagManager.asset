@@ -7,6 +7,10 @@ TagManager:
   - Projectile
   - PlayerWeaponHolder
   - EnemyWeaponHolder
+  - Enemy
+  - Meteor
+  - Items
+  - PlayerHealth
   layers:
   - Default
   - TransparentFX
@@ -16,9 +20,9 @@ TagManager:
   - UI
   - EnemyProjectile
   - PlayerProjectile
-  - 
-  - 
-  - 
+  - Enemy
+  - Player
+  - PlayerBounds
   - 
   - 
   - 
@@ -41,9 +45,21 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BG
+    uniqueID: 3856370529
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Enemy
+    uniqueID: 1099517939
+    locked: 0
+  - name: Meteor
+    uniqueID: 2305242701
+    locked: 0
   - name: Player
     uniqueID: 360200453
+    locked: 0
+  - name: UI
+    uniqueID: 3695021051
     locked: 0

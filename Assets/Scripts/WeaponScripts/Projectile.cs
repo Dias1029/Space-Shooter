@@ -29,4 +29,20 @@ public class Projectile : MonoBehaviour
     {
         transform.Translate(0f, speed * Time.deltaTime, 0f);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag(TagManager.PLAYER_TAG))
+            collision.GetComponent<PlayerHealth>().TakeDamage(weaponDamage);
+
+        if (collision.CompareTag(TagManager.ENEMY_TAG) || collision.CompareTag(TagManager.METEOR_TAG))
+        {
+            if ((gameObject.GetComponent<SpriteRenderer>() && gameObject.GetComponent<SpriteRenderer>().flipY == true) || !collision.GetComponent<EnemyHealth>())
+                return;
+            collision.GetComponent<EnemyHealth>().TakeDamage(weaponDamage, 0f);
+        }
+
+        if (!collision.CompareTag(TagManager.NONTAGGED) && !collision.CompareTag(TagManager.ITEMS_TAG))
+            gameObject.SetActive(false);
+    }
 }

@@ -24,6 +24,7 @@ public class Pooling : MonoBehaviour
         if (isEnemy)
         {
             weaponHolder = GameObject.FindWithTag(TagManager.ENEMY_WEAPON_HOLDER_TAG);
+            ResetShooting();
         }
         else
         {
@@ -42,6 +43,14 @@ public class Pooling : MonoBehaviour
         HandleEnemyShooting();
     }
 
+    public void OnClickShoot()
+    {
+        if (!canShoot || isEnemy)
+            return;
+        GetFromPool();
+        ResetShooting();
+    }
+
     void HandlePlayerShooting()
     {
         if (!canShoot || isEnemy)
@@ -51,12 +60,6 @@ public class Pooling : MonoBehaviour
             GetFromPool();
             ResetShooting();
         }*/
-    }
-
-    public void OnClickShoot()
-    {
-        GetFromPool();
-        ResetShooting();
     }
 
     void GetFromPool()
@@ -95,13 +98,17 @@ public class Pooling : MonoBehaviour
         canShoot = false;
 
         if (isEnemy)
-            shootTimer = Time.time + Random.Range(shootTimer, (shootWaiting = 1f));
+            shootTimer = Time.time + Random.Range(shootWaiting, (shootWaiting + 1f));
         else
             shootTimer = Time.time + shootWaiting;
     }
 
     void HandleEnemyShooting()
     {
+        if (!isEnemy || !canShoot)
+            return;
 
+        ResetShooting();
+        GetFromPool();
     }
 }
